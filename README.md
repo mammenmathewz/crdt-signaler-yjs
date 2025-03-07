@@ -1,6 +1,7 @@
 # crdt-signaler-yjs
 
-**crdt-signaler-yjs** is a signaling server built using Yjs, designed to handle real-time collaborative editing for your SaaS application **Octaview**. This server allows multiple users to edit code collaboratively in real time through a powerful, efficient CRDT (Conflict-Free Replicated Data Types) mechanism. 
+**crdt-signaler-yjs** is a signaling server built using Yjs, designed to handle real-time collaborative editing for your SaaS application **Octaview**. This server allows multiple users to edit code collaboratively in real time through a powerful, efficient CRDT (Conflict-Free Replicated Data Types) mechanism.
+
 ## Features
 
 - Real-time collaboration for editing code
@@ -29,20 +30,20 @@ Follow these steps to set up the signaling server:
 
 1. Clone the repository:
 
-   ```bash
+   ```
    git clone https://github.com/<your-username>/crdt-signaler-yjs.git
    cd crdt-signaler-yjs
+   ```
 
-import * as Y from 'yjs'
+```import \* as Y from 'yjs'
 import { WebrtcProvider } from 'y-webrtc'
 
 const ydoc = new Y.Doc()
-// clients connected to the same room-name share document updates
+//clients connected to the same room-name share document updates
 const provider = new WebrtcProvider('your-room-name', ydoc, { password: 'optional-room-password' })
 const yarray = ydoc.get('array', Y.Array)```
 
 ### Signaling
-
 
 The peers find each other by connecting to a signaling server. This package implements a small signaling server in `./bin/server.js`.
 
@@ -54,15 +55,19 @@ PORT=4444 node ./bin/server.js
 Peers using the same signaling server will find each other. You can specify several custom signaling servers like so:
 
 ```js
-const provider = new WebrtcProvider('your-room-name', ydoc, { signaling: ['wss://y-webrtc-ckynwnzncc.now.sh', 'ws://localhost:4444'] })
+const provider = new WebrtcProvider("your-room-name", ydoc, {
+  signaling: ["wss://y-webrtc-ckynwnzncc.now.sh", "ws://localhost:4444"],
+});
 ```
 
 ## Integration with Octaview
+
 Octaview is a collaborative hiring and interview platform that integrates various tools to enhance the recruitment process. One of the core features of Octaview is the Collaborative Code Editor, built using Monco VS Code, which allows real-time collaboration on code editing.
 
 The crdt-signaler-yjs server plays a crucial role in enabling real-time collaboration by managing WebRTC peer connections within the Octaview platform. It allows users to collaborate seamlessly in the Collaborative Code Editor.
 
 ### Steps to Integrate
+
 Integrate Monco VS Code as the code editor: Set up the Monco VS Code collaborative code editor within Octaview.
 Use the signaling server: Configure your Octaview platform to interact with the crdt-signaler-yjs server for managing WebRTC peer connections.
 Real-time updates: The server will ensure that all changes are reflected in real-time during collaboration in Monco VS Code.
