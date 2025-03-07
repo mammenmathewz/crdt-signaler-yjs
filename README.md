@@ -68,7 +68,9 @@ Use the signaling server: Configure your Octaview platform to interact with the 
 Real-time updates: The server will ensure that all changes are reflected in real-time during collaboration in Monco VS Code.
 
 ## License
-For more information about Octaview and its features, visit the Octaview Website.
-Yjs is licensed under the [MIT License](./LICENSE).
 
-<kevin.jahns@pm.me>
+For more information about Octaview and its features, visit the Octaview Website.
+
+**crdt-signaler-yjs** is a wrapper around Yjs, utilizing its CRDT capabilities for real-time collaborative editing.
+
+Yjs is licensed under the [MIT License](./LICENSE).
