@@ -42,7 +42,7 @@ const provider = new WebrtcProvider('your-room-name', ydoc, { password: 'optiona
 const yarray = ydoc.get('array', Y.Array)
 
 ### Signaling
-```
+
 
 The peers find each other by connecting to a signaling server. This package implements a small signaling server in `./bin/server.js`.
 
